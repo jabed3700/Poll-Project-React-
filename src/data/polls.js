@@ -1,4 +1,4 @@
-const Polls =[
+const Polls = [
     {
         id: '157825',
         title: 'What is Your Favourite Programming Language',
