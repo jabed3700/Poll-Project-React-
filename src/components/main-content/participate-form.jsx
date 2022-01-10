@@ -1,5 +1,5 @@
 import React from "react";
-import {Form,FormGroup,FormFeedback,Input,CustomInput,Label,Button} from 'reactstrap'
+import {Form,FormGroup,FormFeedback,Input,CustomInput,Label,Button,ListGroup,ListGroupItem} from 'reactstrap'
 
 class ParticipationForm extends React.Component{
     state={
@@ -58,7 +58,8 @@ class ParticipationForm extends React.Component{
     render(){
 
         return(
-            <Form onSubmit={this.handleSubmit}>
+            <div className="">
+                  <Form onSubmit={this.handleSubmit}>
                 <div className="d-flex">
                     <h4>Options</h4>
                     <Button
@@ -132,6 +133,32 @@ class ParticipationForm extends React.Component{
                 </FormGroup>
                 <Button type="submit">Submit Your Opinion</Button>
             </Form>
+
+            <hr />
+            <div className="voter-list">
+                <div className="filter d-flex justify-content-end">
+                    <FormGroup>
+                        <Button color="danger"className="me-2" >All</Button>
+                        {this.props.poll.options.map(e=>
+                            
+                            (<Button color="danger" className="me-2">{e.value}</Button>)
+                        )}
+                    </FormGroup>
+                </div>
+                <div className="voter">
+                    <ListGroup><h4>Voter List</h4>
+                    {this.props.poll.opinnions.map(op=>(
+                        
+                        <ListGroupItem key={op.id}>
+                            {op.name}
+                            {console.log(this.props.poll)}
+                        </ListGroupItem>
+                        ))}
+                    </ListGroup>
+                </div>
+            </div>
+            </div>
+            
         )
     }
 }

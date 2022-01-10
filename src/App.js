@@ -69,7 +69,6 @@ class App extends React.Component{
     // return
 
     poll.opinnions.push(opinion)
-     console.log(poll,option)
     this.setState({polls})
   } 
 
