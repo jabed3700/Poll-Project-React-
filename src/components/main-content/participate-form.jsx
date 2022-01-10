@@ -56,6 +56,7 @@ class ParticipationForm extends React.Component{
     }
 
     render(){
+        // console.log(this.props)
         return(
             <Form onSubmit={this.handleSubmit}>
                 <div className="d-flex">
@@ -75,7 +76,7 @@ class ParticipationForm extends React.Component{
                     </Button>
                 </div>
                 {
-                    this.props.poll.options.map(opt=>(
+                    this.props.poll.option.map(opt=>(
                         <FormGroup className="my-2" key={opt.id}>
                             <Label className="d-flex">
                                 <Input 
@@ -85,7 +86,9 @@ class ParticipationForm extends React.Component{
                                     value={opt.id}
                                     onChange={this.handleChange}
                                     invalid={this.state.errors.selectedOption ? true:false}
+                                    className="me-2"
                                 />
+
                                 {opt.value}
                                 <span
                                     style={{
@@ -114,7 +117,7 @@ class ParticipationForm extends React.Component{
                         </FormGroup>
                     ))
                 }
-                <FormGroup className="my3">
+                <FormGroup className="my-3">
                     <Label>Enter Your Name</Label>
                     <Input
                         name="name"

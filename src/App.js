@@ -14,7 +14,6 @@ class App extends React.Component{
 
   componentDidMount(){
     this.setState({polls:Polls})
-    console.log(this.state.polls)
   }
 
   addNewPoll = poll =>{
@@ -45,9 +44,29 @@ class App extends React.Component{
   }
 
   selectPoll = pollId =>{
-    const poll = this.state.polls.find(p=>p.id ===pollId)
-    this.state({selectedPoll:poll})
+    const poll = this.state.polls.find(p=>p.id === pollId)
+    this.setState({selectedPoll:poll})
+    // console.log(poll)
   }
+
+  getOpinion = response =>{
+    const {polls} = this.state
+    const poll = polls.find(p=>p.id===response.pollId)
+    const option = poll.options.find(
+      o=>o.id===response.selectedOption
+    )
+
+    poll.totalVote++
+    option.vote++
+    const opinion = {
+      id:shortid.generate(),
+      name:response.name,
+      selectedOption:response.selectedOption
+    }
+
+    poll.opinnions.push(opinion)
+    this.setState({polls})
+  } 
 
   handleSearch = searchTerm =>{}
 
@@ -58,15 +77,20 @@ class App extends React.Component{
             <Row className="my-5">
                 <Col md={4}>
                   <Sidebar
-                   polls={this.state.polls} 
-                   searchTerm={this.state.searchTerm}
-                  handleSearch={this.handleSearch} 
-                  selectPoll={this.selectPoll}
-                  addNewPoll = {this.addNewPoll}
+                    polls={this.state.polls} 
+                    searchTerm={this.state.searchTerm}
+                    handleSearch={this.handleSearch} 
+                    selectPoll={this.selectPoll}
+                    addNewPoll = {this.addNewPoll}
                   />
                 </Col>
                 <Col md={8}>
-                  <MainContent  />
+                  <MainContent  
+                    poll={this.state.selectedPoll}
+                    getOpinion = {this.getOpinion}
+                    updatePoll={this.updatePoll}
+                    deletePoll={this.deletePoll}
+                  />
                 </Col>
             </Row>
           </Container>
