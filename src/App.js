@@ -21,7 +21,6 @@ class App extends React.Component{
     poll.created = new Date()
     poll.totalVote = 0
     poll.opinnions = []
-   
     this.setState({
       polls:this.state.polls.concat(poll)
     })
