@@ -2,7 +2,7 @@ import React from "react";
 import { Button,Input,Modal,ModalHeader,ModalBody } from "reactstrap";
 
 import PollList from "./poll-list";
-import PollForm from "../poll-form/form";
+import PollForm from "../poll-form";
 
 class Sidebar extends React.Component{
     state={openModal:false}

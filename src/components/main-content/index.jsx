@@ -26,8 +26,8 @@ class MainContent extends React.Component{
             )
         }
 
-        const {poll,getOption,updatePoll,deletePoll} = this.props
-        console.log(this.props)
+        const {poll,getOpinion,updatePoll,deletePoll} = this.props
+  
         return(
             <div>
                 <h3>{poll.title}</h3>
@@ -35,7 +35,7 @@ class MainContent extends React.Component{
                 <br />
                 <ParticipationForm
                     poll ={poll}
-                    getOption={getOption}
+                    getOpinion={getOpinion}
                     toggleModal={this.toggleModal}
                     deletePoll={deletePoll}
                 />
@@ -45,7 +45,7 @@ class MainContent extends React.Component{
                     unmountOnClose={true}
                 >   
                 <ModalHeader toggle={this.toggleModal}>
-                    Update Modal
+                    Update Poll
                 </ModalHeader>
                 <ModalBody>
                     <PollForm 

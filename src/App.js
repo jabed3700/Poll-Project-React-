@@ -21,7 +21,7 @@ class App extends React.Component{
     poll.created = new Date()
     poll.totalVote = 0
     poll.opinnions = []
-
+   
     this.setState({
       polls:this.state.polls.concat(poll)
     })
@@ -46,25 +46,31 @@ class App extends React.Component{
   selectPoll = pollId =>{
     const poll = this.state.polls.find(p=>p.id === pollId)
     this.setState({selectedPoll:poll})
-    // console.log(poll)
   }
 
   getOpinion = response =>{
     const {polls} = this.state
     const poll = polls.find(p=>p.id===response.pollId)
+    
     const option = poll.options.find(
       o=>o.id===response.selectedOption
     )
-
+   
     poll.totalVote++
     option.vote++
+
+  
     const opinion = {
       id:shortid.generate(),
       name:response.name,
       selectedOption:response.selectedOption
     }
 
+    // console.log(poll,option)
+    // return
+
     poll.opinnions.push(opinion)
+     console.log(poll,option)
     this.setState({polls})
   } 
 
