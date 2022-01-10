@@ -17,7 +17,7 @@ class Sidebar extends React.Component{
                         type="search"
                         placeholder="Search"
                         value={this.props.searchTerm}
-                        onChange={e=>this.props.hangleSearch(e.target.value)}
+                        onChange={e=>this.props.handleSearch(e.target.value)}
                     />
                     <Button color='success' className="ms-2" onClick={this.toggleModal}>New</Button>
                 </div>
