@@ -17,7 +17,7 @@ class App extends React.Component{
     console.log(this.state.polls)
   }
 
-  createPoll = poll =>{
+  addNewPoll = poll =>{
     poll.id = shortid.generate()
     poll.created = new Date()
     poll.totalVote = 0
@@ -57,7 +57,13 @@ class App extends React.Component{
           <Container>
             <Row className="my-5">
                 <Col md={4}>
-                  <Sidebar  polls={this.state.polls} searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} selectPoll={this.selectPoll}/>
+                  <Sidebar
+                   polls={this.state.polls} 
+                   searchTerm={this.state.searchTerm}
+                  handleSearch={this.handleSearch} 
+                  selectPoll={this.selectPoll}
+                  addNewPoll = {this.addNewPoll}
+                  />
                 </Col>
                 <Col md={8}>
                   <MainContent  />
